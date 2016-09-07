@@ -1,0 +1,191 @@
+#include<stdio.h>
+#include<conio.h>
+#include<iostream>
+#define pp 3
+using namespace std;
+
+struct data
+{
+	float x;
+	float y;
+	float z;
+};
+struct nu
+{
+	float val;
+	int degree;
+};
+data calc_min(data a[], int n)
+{
+		data small;
+		small.x=999;small.y=999;small.z=999;
+		for(int i=0;i<n;i++)
+		{
+		if(a[i].x<small.x)
+			small.x=a[i].x;
+		if(a[i].y<small.y)
+			small.y=a[i].y;
+		if(a[i].z<small.z)
+			small.z=a[i].z;
+		}
+		return small;
+}
+
+float cal_min(float a, float b)
+{
+	if(a<=b)return a;
+	else return b;
+}
+
+float cal_max(float a, float b)
+{
+	if(a>=b)return a;
+	else return b;
+}
+
+data compute(data a, data b)
+{
+	data c;
+	c.x=cal_min(a.x, b.x);
+	c.z=cal_min(cal_min(a.z, b.z), cal_max(a.y, b.y));
+	if(cal_min(a.y, b.y)<=cal_max(a.x, b.x))
+	c.y=cal_min(a.y, b.y);
+	else
+	c.y=(((a.y*b.y)-(a.x*b.x))/((a.y+b.y)-(a.x+b.x)));
+	return c;
+}
+
+/*struct bst
+	{
+		int data;
+		struct bst *left, *right;
+	}node;
+
+void create_node()
+	{
+		struct bst *temp;
+		temp =(node *)malloc(sizeof(node));
+		temp->left=null;
+		temp->right=null;
+	}
+
+void insert_node(node *root, node *temp)
+	{
+		if(root==null)
+		root=temp;
+		else
+		{
+		if(root->left==null)
+		root->left=temp;
+		else if (root->right==null)
+		root->right=temp;
+		else if
+		insert_node(root->left, temp);
+		else
+		insert_node(root->right, temp);
+		}	
+}
+
+*/
+main()
+{
+	data a[5][5];
+	a[1][2].x=1;
+	a[1][2].y=3;
+	a[1][2].z=4;
+	
+	a[1][3].x=2;
+	a[1][3].y=4;
+	a[1][3].z=5;
+	
+	a[2][4].x=1;
+	a[2][4].y=2;
+	a[2][4].z=3;
+	
+	a[2][5].x=2;
+	a[2][5].y=4;
+	a[2][5].z=6;
+	
+	a[3][5].x=2;
+	a[3][5].y=5;
+	a[3][5].z=6;
+	
+	a[4][6].x=2;
+	a[4][6].y=3;
+	a[4][6].z=8;
+	
+	a[5][6].x=3;
+	a[5][6].y=5;
+	a[5][6].z=7;
+	
+	cout<<"1---------2---------4";
+	cout<<"\n"<<"|"<<"         |"<<"         |";
+	cout<<"\n"<<"|"<<"         |"<<"         |";
+	cout<<"\n"<<"|"<<"         |"<<"         |";
+	cout<<"\n"<<"3---------5---------6";
+	cout<<"\n \nPossible Paths are \n\nPATH 1 \t 1-2-4-6 \nPATH 2 \t 1-2-5-6 \nPATH 3 \t 1-3-5-6";
+	
+	data path[3];
+	path[0].x=a[1][2].x+a[2][4].x+a[4][6].x;
+	path[0].y=a[1][2].y+a[2][4].y+a[4][6].y;
+	path[0].z=a[1][2].z+a[2][4].z+a[4][6].z;
+	
+	path[1].x=a[1][2].x+a[2][5].x+a[5][6].x;
+	path[1].y=a[1][2].y+a[2][5].y+a[5][6].y;
+	path[1].z=a[1][2].z+a[2][5].z+a[5][6].z;
+
+	path[2].x=a[1][3].x+a[3][5].x+a[5][6].x;
+	path[2].y=a[1][3].y+a[3][5].y+a[5][6].y;
+	path[2].z=a[1][3].z+a[3][5].z+a[5][6].z;
+	
+	
+	
+	data min[2];
+	min[0]=calc_min(path,pp);
+	cout<<"\n";
+	for(int i=0;i<pp;++i)
+	cout<<"\n"<<"PATH "<<i+1<<"\t"<<path[i].x<<"\t"<<path[i].y<<"\t"<<path[i].z;
+	cout<<"\n\nCalculating Lmin (a, b, c)";
+	cout<<"\na"<<"\tb"<<"\tc";
+	cout<<"\n\n"<<min[0].x<<"\t"<<min[0].y<<"\t"<<min[0].z;
+	
+	cout<<"\n\nComputing (a,b,c)";
+	cout<<"\nIterations"<<"\ta"<<"\tb"<<"\tc";
+	
+	data cz[4];
+	int i=1;
+	
+	cz[0]=path[0];
+	do
+	{		int y=i-1;
+			cz[1]=compute(cz[0],path[i]);
+			if(i==1)
+			cz[0]=cz[1];
+			cz[0]=calc_min(cz, 2);	
+			i++;
+			cout<<"\n\n"<<i-1<<"\t\t"<<cz[0].x<<"\t"<<cz[0].y<<"\t"<<cz[0].z<<"\n";
+	}while(i<pp);
+	cout<<"\n\nAccepted Val"<<"\t"<<cz[0].x<<"\t"<<cz[0].y<<"\t"<<cz[0].z<<"\n";
+
+	data Lmin=cz[0];
+	cout<<"\n\nCalculating Similarity degree \n";
+	nu s[pp];
+	for(int i=0;i<pp;++i)
+	{
+	s[i].val=(100*((Lmin.z-Lmin.x)*(Lmin.z-Lmin.x)))/((2*(path[i].z-path[i].x)*(Lmin.z-Lmin.y)*path[i].y-path[i].x));
+	s[i].degree=i+1;
+	cout<<"\nPATH "<<s[i].degree<<"\t"<<s[i].val;
+	}
+	cout<<"\n\nRank\t"<<"Optimum Path"<<"\t"<<"Similarity Degree\n";
+	for(int i=0;i<pp;i++)
+	for(int j=i+1;j<pp;j++)
+	if(s[i].val>s[j].val)
+		{
+			nu temp=s[i];
+			s[i]=s[j];
+			s[j]=temp;
+		}
+	for(int i=0;i<pp;++i)
+	cout<<i+1<<"\tPATH "<<s[i].degree<<"\t\t"<<s[i].val<<"\n";	
+}
+

@@ -1,0 +1,97 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="indiastyle.css"></head>
+<body background="launch.jpg">
+<div id="none" style= "background-color:#D8D8D8;HEIGHT:100PX;width:1340px;margin-left:0px;">
+
+<h4>Buy Online or Call 1-800-425-4026 or 080-2506-8026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Registration.php" style="text-decoration:none;"><span><font size=5px color=#000000>Premier Login/</font</a><a href="Registration.php" style="text-decoration:none;"><font size=5px color=#000000>Signup</font></span></a>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp&nbsp;&nbsp; &nbsp&nbsp;&nbsp; &nbsp<font size=4px color=#000000><b>We Design for You</b><font></h4>
+
+<div id="none" style= "background-color:#0080FF;HEIGHT:50PX;width:940px;margin-left:0px;">
+<div id="none" style= "background-color:#0080FF;HEIGHT:50PX;width:940px;margin-left:400px;">
+<div style="margin-top:12px;float:left"><font size="5px"><a href="Main.php" style="text-decoration: none ;color:#ffffff;">Home</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Aboutus.php" style="text-decoration:none;color:#ffffff">About Us</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="gallery.html" style="text-decoration: none;color:#ffffff">Gallery</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="contactus.php" style="text-decoration: none;color:#ffffff">Contact Us</a>
+</div></div></div>
+
+</div>
+
+
+
+<script>
+var i=1;
+var im=new Array("g1.jpg","g2.jpg","g3.jpg","g4.jpg","g5.jpg","g6.jpg","g7.jpg","g8.jpg");
+var y=window.setInterval(function(){slideshow()},2000);
+function slideshow()
+{
+document.getElementById("my").src=im[i];
+i=(i+1)%8;
+}
+</script>
+<script>
+function getCookie(c_name)
+{
+var c_value = document.cookie;
+var c_start = c_value.indexOf(" " + c_name + "=");
+if (c_start == -1)
+  {
+  c_start = c_value.indexOf(c_name + "=");
+  }
+if (c_start == -1)
+  {
+  c_value = null;
+  }
+else
+  {
+  c_start = c_value.indexOf("=", c_start) + 1;
+  var c_end = c_value.indexOf(";", c_start);
+  if (c_end == -1)
+    {
+    c_end = c_value.length;
+    }
+  c_value = unescape(c_value.substring(c_start,c_end));
+  }
+return c_value;
+}
+
+function setCookie(c_name,value,exdays)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+document.cookie=c_name + "=" + c_value;
+}
+
+function checkCookie()
+{
+var username=getCookie("username");
+if (username!=null && username!="")
+  {
+  alert("Welcome again " + username);
+  }
+else 
+  {
+  username=prompt("Please enter your name:","");
+  if (username!=null && username!="")
+    {
+    setCookie("username",username,365);
+    }
+  }
+}
+</script>
+<div style="width:1360px; height:1024px"><br>
+<a href="gallery.html"style="float: left;margin-left:90px"><div id="one"></div></a>
+<a href="gallery.html"style="float: left;"><div id="two"></div></a>
+<a href="gallery.html"style="float: left;"><div id="three"></div></a>
+<a href="gallery.html"style="float: left;"><div id="four"></div></a>	
+<div style="width:1360px;"><br></div>
+<font><br></font>
+<center><img src="g1.jpg" height="500px" width="1024px" id='my'></center>
+<a href="gallery.html"style="float: left; margin-left:90px"><div id="five"></div></a>	
+<a href="gallery.html"style="float: left;"><div id="six"></div></a>
+<a href="gallery.html"style="float: left;"><div id="seven"></div></a>
+<a href="gallery.html"style="float: left;"><div id="eight"></div></a>	
+<br>
+ </div>	
+
+</html>

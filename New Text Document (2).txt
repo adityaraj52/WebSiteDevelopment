@@ -1,0 +1,8 @@
+<?php
+$con=mysql_connect("mobile.com","aditya","abc");
+if(mysql_connect_errno())
+echo "failed to connect to sql".mysql_connect_error();
+$sql="INSERT INTO Persons (FirstName,Email,Password)
+VALUES ('$_POST[Uname]','$_POST[Email]','$_POST[PASS]')";
+mysql_close($con);
+?>

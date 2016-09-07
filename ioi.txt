@@ -1,0 +1,24 @@
+<h4>Buy Online or Call 1-800-425-4026 or 080-2506-8026
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Welcome
+
+<?php
+session_start();
+echo $_SESSION['username'];
+?>
+
+<div id="none" style= "background-color:#0080FF;HEIGHT:50PX;width:940px;margin-left:0px;margin-top:20px">
+<div id="none" style= "background-color:#0080FF;HEIGHT:50PX;width:940px;margin-left:400px;">
+<div style="margin-top:12px;float:left"><font size="5px">
+
+<a href="main.htm" style="text-decoration: none ;color:#ffffff;">Home</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<a href="ProfileView.php" style="text-decoration: none ;color:#ffffff;">View Info</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="update.php" style="text-decoration:none;color:#ffffff">Update </a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
